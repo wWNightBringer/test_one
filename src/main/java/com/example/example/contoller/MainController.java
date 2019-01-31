@@ -31,7 +31,7 @@ public class MainController {
         return "hello";
     }
 
-    @GetMapping("/encode")
+    @PostMapping("/encode")
     public Map showEncryptText(@RequestParam(value = "line", required = false, defaultValue = "Hello anyone") String line) throws NoSuchPaddingException, UnsupportedEncodingException,
             InvalidAlgorithmParameterException, NoSuchAlgorithmException, IllegalBlockSizeException,
             BadPaddingException, InvalidKeyException {
@@ -41,8 +41,10 @@ public class MainController {
         return map;
     }
 
-    @GetMapping("/decode")
-    public Map showDecrypteText(@RequestParam(value = "line",required = false,defaultValue = "Sa1yCknYUbnHaGknx/Tm0Q==")String line) throws NoSuchPaddingException, UnsupportedEncodingException, InvalidAlgorithmParameterException, NoSuchAlgorithmException, IllegalBlockSizeException, BadPaddingException, Base64DecodingException, InvalidKeyException {
+    @PostMapping("/decode")
+    public Map showDecryptText(@RequestParam(value = "line",required = false,defaultValue = "Sa1yCknYUbnHaGknx/Tm0Q==")String line)
+            throws NoSuchPaddingException, UnsupportedEncodingException, InvalidAlgorithmParameterException,
+            NoSuchAlgorithmException, IllegalBlockSizeException, BadPaddingException, Base64DecodingException, InvalidKeyException {
         encryption.decode(line);
         map = new HashMap<>();
         map.put("decode", encryption.getDecrypt());
