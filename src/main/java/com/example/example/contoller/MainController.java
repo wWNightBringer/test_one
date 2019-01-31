@@ -26,7 +26,7 @@ public class MainController {
         this.encryption = encryption;
     }
 
-    @GetMapping("/")
+    @PostMapping("/")
     public String show() {
         return "hello";
     }
